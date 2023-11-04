@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    overflow: hidden;
+}
+
+.screen {
+    display: flex;
+    width: 100wh;
+    height: 100vh;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background */
+.screen .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.screen .background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Interface */
+.screen .interface-container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas: 
+        'header header header'
+        'side-left centered side-right'
+        'side-left centered side-right'
+        'side-left centered side-right'
+        'side-left centered side-right'
+        'dialogue dialogue dialogue'
+        'dialogue dialogue dialogue';
+    z-index: 2;
+}
+
+.screen .interface {
+    display: flex;
+    min-height: 50px;
+    /* border: 2px solid black; */
+    background-color: transparent;
+}
+
+.screen .interface.header {
+    grid-area: header;
+}
+.screen .interface.centered {
+    grid-area: centered;
+}
+.screen .interface.side-left {
+    grid-area: side-left;
+}
+.screen .interface.side-right {
+    grid-area: side-right;
+}
+.screen .interface.dialogue {
+    grid-area: dialogue;
+}
+
+.screen .interface.dialogue{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    padding: 10px 30px;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #000000af;
+    border: 3px solid black;
+    backdrop-filter: blur(5px);
+}
+
+.screen .interface.dialogue h3, .screen .interface.dialogue p {
+    color: white;
+    user-select: none;
+}
+
+.screen .interface.dialogue h3 {
+    position: relative;
+    left: -8px;
+    font-size: 23px;
+}
+
+.screen .interface.dialogue p {
+    font-size: 17px;
+}
+
+@media screen and (max-width: 576px) {
+    .screen .interface.dialogue {
+        width: 90%;
+    }
+}
